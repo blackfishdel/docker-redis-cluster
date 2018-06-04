@@ -1,6 +1,6 @@
 version: '2'
 services:
-  redis-cluster
+  redis-cluster:
     images: registry.docker-cn.com/grokzen/redis-cluster:4.0.9
     environment:
      IP: ${REDIS_CLUSTER_IP}
