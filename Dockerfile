@@ -1,4 +1,4 @@
-FROM redis:3.2
+FROM registry.docker-cn.com/library/redis:3.2
 
 MAINTAINER Johan Andersson <Grokzen@gmail.com>
 
