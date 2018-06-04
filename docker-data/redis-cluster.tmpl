@@ -3,12 +3,13 @@ port ${PORT}
 cluster-enabled yes
 cluster-config-file nodes.conf
 cluster-node-timeout 5000
+
+#==========================================AOF
 appendonly yes
 dir /redis-data/${PORT}
 
 #设置数据库的数量，默认数据库为0
 databases 10
-
 
 #==========================================限制
 #限制客户端的连接数
@@ -17,6 +18,8 @@ maxclients 128
 timeout 15000
 #redis内部调度（进行关闭timeout的客户端，删除过期key等等）频率
 hz 20
+
+#==========================================内存
 #最大内存最好不要超过空闲内存的3/5，超过32GB会自动进入64位世界，指针长度*2，20%的空间会被指针消耗，性能略有影响
 maxmemory 2gb
 #4种策略volatile-lru、allkeys-lru、volatile-random、allkeys-random、noeviction根据 LRU 算法移除内存中所有的 key
