@@ -14,7 +14,7 @@ if [ "$1" = 'redis-cluster' ]; then
     fi
 
     #---------------------------------------------------------------------------
-    #循环7000~max_port的整数=port
+    #循环7000~7005的整数=port
     for port in `seq 7000 $max_port`; do
       mkdir -p /redis-conf/${port}
       mkdir -p /redis-data/${port}
