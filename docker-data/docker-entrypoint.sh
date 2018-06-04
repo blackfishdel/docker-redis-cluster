@@ -9,24 +9,29 @@ if [ "$1" = 'redis-cluster' ]; then
       max_port=7005
     fi
 
+    #循环7000-max_port的整数=port
     for port in `seq 7000 $max_port`; do
       mkdir -p /redis-conf/${port}
       mkdir -p /redis-data/${port}
 
+      #为每个节点创建nodes.conf
       if [ -e /redis-data/${port}/nodes.conf ]; then
         rm /redis-data/${port}/nodes.conf
       fi
 
+      #小于7006的复制redis-cluster.conf配置文件，>=7006复制redis.conf
       if [ "$port" -lt "7006" ]; then
         PORT=${port} envsubst < /redis-conf/redis-cluster.tmpl > /redis-conf/${port}/redis.conf
       else
         PORT=${port} envsubst < /redis-conf/redis.tmpl > /redis-conf/${port}/redis.conf
       fi
+
     done
-
+    #---------------------------------------------------------------------------
+    #最大port创建supervisor进程管理工具
     bash /generate-supervisor-conf.sh $max_port > /etc/supervisor/supervisord.conf
-
     supervisord -c /etc/supervisor/supervisord.conf
+
     sleep 3
 
     # If IP is unset then discover it
