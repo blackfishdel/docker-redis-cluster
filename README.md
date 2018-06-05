@@ -1,5 +1,9 @@
 # docker-redis-cluster
 
+docker rm -f $(docker ps -aq)
+
+make build && make up
+
 [![Docker Stars](https://img.shields.io/docker/stars/grokzen/redis-cluster.svg)](hub])
 [![Docker Pulls](https://img.shields.io/docker/pulls/grokzen/redis-cluster.svg)](hub])
 
