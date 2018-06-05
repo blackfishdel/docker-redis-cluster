@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 
 # $1=name
 # $2=ip
