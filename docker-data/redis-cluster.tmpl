@@ -13,6 +13,7 @@ cluster-node-timeout 5000
 #masterauth <master-password>              #当master设置了密码保护时,slave服务连接master的密码
 
 #base
+pidfile /var/run/redis_${PORT}.pid
 daemonize yes                             #redis进程是否以守护进程的方式运行,yes为是,no为否
 databases 10                              #设置数据库的数量，默认数据库为0
 timeout 15000                             #当客户端闲置多长时间后关闭连接，如果指定为0，表示关闭该功能
