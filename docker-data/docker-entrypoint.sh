@@ -41,9 +41,9 @@ if [ "$1" = 'redis-cluster' ]; then
 
     #---------------------------------------------------------------------------
     #如果未设置环境变量IP，通过ifconfig命令查询
-    if [ -z "$IP" ]; then
-        IP=`ifconfig | grep "inet addr:17" | cut -f2 -d ":" | cut -f1 -d " "`
-    fi
+    # if [ -z "$IP" ]; then
+    #     IP=`ifconfig | grep "inet addr:17" | cut -f2 -d ":" | cut -f1 -d " "`
+    # fi
 
     #---------------------------------------------------------------------------
     #通过redis-trib.rb创建redis集群
